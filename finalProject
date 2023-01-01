@@ -1,0 +1,921 @@
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glut.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <windows.h>
+#include <math.h>
+
+double Txval=0;
+double Tyval=0;
+double sval=1.5;
+double txval=0,txval1=0,txvalC=0,txval1C=0, txvalS=0,txval1S=0,txvalCC=0,txvallCC=0;
+
+double  r=0.02,s=0.03,l=0.03,m=0.002;
+int i;
+float  tx=10,bx=10,rx=10;
+
+ void sky()
+ {
+    glBegin(GL_POLYGON);
+   glColor3f(0,0.3,0.9);
+   glVertex2f(0,0);
+   glVertex2f(35,0);
+   glVertex2f(35,35);
+   glVertex2f(0,35);
+   glEnd();
+   glPopMatrix();
+ }
+
+ void sun(double x, double y)
+{
+
+
+    glBegin(GL_TRIANGLE_FAN);
+        for(i=0;i<360;i++)
+        {
+            x=x+cos((i*3.14)/180)*s;
+            y=y+sin((i*3.14)/180)*s;
+
+            glVertex2f(x,y);
+
+        }
+
+
+    glEnd();
+
+
+
+
+}
+
+void cloud(double x, double y)
+{
+
+
+    glBegin(GL_TRIANGLE_FAN);
+        for(i=0;i<360;i++)
+        {
+            x=x+cos((i*3.14)/180)*r;
+            y=y+sin((i*3.14)/180)*r;
+
+            glVertex2d(x,y);
+
+        }
+
+
+    glEnd();
+
+
+
+}
+
+void star(double x, double y)
+{
+
+
+    glBegin(GL_TRIANGLE_FAN);
+        for(i=0;i<360;i++)
+        {
+            x=x+cos((i*3.14)/180)*m;
+            y=y+sin((i*3.14)/180)*m;
+
+            glVertex2d(x,y);
+
+        }
+
+
+    glEnd();
+
+
+
+}
+
+ void house_1()
+ {
+
+    glColor3f( 0.184314, 0.184314,0.309804); //house 1
+glBegin(GL_POLYGON);
+
+    glVertex2i(5,0);
+glVertex2i(9,0);
+glVertex2i(9,12);
+glVertex2i(5,12);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,0.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(6,0);
+glVertex2i(8,0);
+glVertex2i(8,3);
+glVertex2i(6,3);
+
+    glEnd();
+
+
+    glColor3f( 1.0, 2.0,0.6);
+glBegin(GL_POLYGON);
+
+    glVertex2i(6,4);
+glVertex2i(8,4);
+glVertex2i(8,7);
+glVertex2i(6,7);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,0.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(6,8);
+glVertex2i(8,8);
+glVertex2i(8,11);
+glVertex2i(6,11);
+
+    glEnd(); //house 1 end
+ }
+  void house_11()
+ {
+
+     glColor3f( 0, 0,0); //house 1
+glBegin(GL_POLYGON);
+
+    glVertex2i(5,0);
+glVertex2i(9,0);
+glVertex2i(9,12);
+glVertex2i(5,12);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,0.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(6,0);
+glVertex2i(8,0);
+glVertex2i(8,3);
+glVertex2i(6,3);
+
+    glEnd();
+
+
+    glColor3f(1,1,0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(6,4);
+glVertex2i(8,4);
+glVertex2i(8,7);
+glVertex2i(6,7);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,0.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(6,8);
+glVertex2i(8,8);
+glVertex2i(8,11);
+glVertex2i(6,11);
+
+    glEnd(); //house 1 end
+ }
+ void house_2()
+ {
+      glColor3f( 0,0,0); //house 2
+glBegin(GL_POLYGON);
+
+    glVertex2i(10,0);
+glVertex2i(15,0);
+glVertex2i(15,10);
+glVertex2i(10,10);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,0.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(11,1);
+glVertex2i(12,1);
+glVertex2i(12,4);
+glVertex2i(11,4);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,0.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(13,1);
+glVertex2i(14,1);
+glVertex2i(14,4);
+glVertex2i(13,4);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,0.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(11,6);
+glVertex2i(12,6);
+glVertex2i(12,9);
+glVertex2i(11,9);
+
+    glEnd();
+
+        glColor3f( 1.0, 1.0,0.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(13,6);
+glVertex2i(14,6);
+glVertex2i(14,9);
+glVertex2i(13,9);
+
+    glEnd(); //house 2 end
+
+ }
+
+ void house_22()
+ {
+      glColor3f( 0.184314, 0.184314,0.409804); //house 2
+glBegin(GL_POLYGON);
+
+    glVertex2i(10,0);
+glVertex2i(15,0);
+glVertex2i(15,10);
+glVertex2i(10,10);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,0.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(11,1);
+glVertex2i(12,1);
+glVertex2i(12,4);
+glVertex2i(11,4);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,0.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(13,1);
+glVertex2i(14,1);
+glVertex2i(14,4);
+glVertex2i(13,4);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,0.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(11,6);
+glVertex2i(12,6);
+glVertex2i(12,9);
+glVertex2i(11,9);
+
+    glEnd();
+
+        glColor3f( 1.0, 1.0,0.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(13,6);
+glVertex2i(14,6);
+glVertex2i(14,9);
+glVertex2i(13,9);
+
+    glEnd(); //house 2 end
+
+ }
+
+ void house_3()
+ {
+         glColor3f( 0,0,0);  //house 3
+glBegin(GL_POLYGON);
+
+    glVertex2i(16,0);
+glVertex2i(20,0);
+glVertex2i(20,15);
+glVertex2i(16,15);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,1.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(17,1);
+glVertex2i(19,1);
+glVertex2i(19,5);
+glVertex2i(17,5);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,1.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(17,6);
+glVertex2i(19,6);
+glVertex2i(19,10);
+glVertex2i(17,10);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,1.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(17,11);
+glVertex2i(19,11);
+glVertex2i(19,14);
+glVertex2i(17,14);
+
+    glEnd();  //house 3 end
+
+
+
+
+ }
+
+  void house_33()
+ {
+          glColor3f( 0.184314, 0.184314,0.409804); //house 3
+glBegin(GL_POLYGON);
+
+    glVertex2i(16,0);
+glVertex2i(20,0);
+glVertex2i(20,15);
+glVertex2i(16,15);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,1.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(17,1);
+glVertex2i(19,1);
+glVertex2i(19,5);
+glVertex2i(17,5);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,1.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(17,6);
+glVertex2i(19,6);
+glVertex2i(19,10);
+glVertex2i(17,10);
+
+    glEnd();
+
+    glColor3f( 1.0, 1.0,1.0);
+glBegin(GL_POLYGON);
+
+    glVertex2i(17,11);
+glVertex2i(19,11);
+glVertex2i(19,14);
+glVertex2i(17,14);
+
+    glEnd();  //house 3 end
+
+
+
+
+ }
+
+ void house_4()
+ {
+      glColor3f( 0,0,0); // house 4
+glBegin(GL_POLYGON);
+
+    glVertex2i(25,0);
+glVertex2i(30,0);
+glVertex2i(30,20);
+glVertex2i(25,20);
+
+    glEnd();
+
+    glColor3f( 1.0, 2.0,0.6);
+glBegin(GL_POLYGON);
+
+    glVertex2i(26,0);
+glVertex2i(27,0);
+glVertex2i(27,4);
+glVertex2i(26,4);
+
+    glEnd();
+
+    glColor3f( 1.0, 2.0,0.6);
+glBegin(GL_POLYGON);
+
+    glVertex2i(28,0);
+glVertex2i(29,0);
+glVertex2i(29,4);
+glVertex2i(28,4);
+
+    glEnd();
+
+    glColor3f( 1.0, 2.0,0.2);
+glBegin(GL_POLYGON);
+
+    glVertex2i(26,6);
+glVertex2i(27,6);
+glVertex2i(27,10);
+glVertex2i(26,10);
+
+    glEnd();
+
+    glColor3f( 1.0, 2.0,0.2);
+glBegin(GL_POLYGON);
+
+    glVertex2i(28,6);
+glVertex2i(29,6);
+glVertex2i(29,10);
+glVertex2i(28,10);
+
+    glEnd();
+
+    glColor3f( 1.0, 2.0,0.2);
+glBegin(GL_POLYGON);
+
+    glVertex2i(26,12);
+glVertex2i(27,12);
+glVertex2i(27,16);
+glVertex2i(26,16);
+
+    glEnd();
+
+        glColor3f( 1.0, 2.0,0.2);
+glBegin(GL_POLYGON);
+
+    glVertex2i(28,12);
+glVertex2i(29,12);
+glVertex2i(29,16);
+glVertex2i(28,16);
+
+    glEnd();
+
+    glColor3f( 1.0, 2.0,0.6);
+glBegin(GL_POLYGON);
+
+    glVertex2i(26,17);
+glVertex2i(29,17);
+glVertex2i(29,19);
+glVertex2i(26,19);
+
+    glEnd();
+ }
+
+ void house_44()
+ {
+      glColor3f( 0.184314, 0.184314,0.419804); // house 4
+glBegin(GL_POLYGON);
+
+    glVertex2i(25,0);
+glVertex2i(30,0);
+glVertex2i(30,20);
+glVertex2i(25,20);
+
+    glEnd();
+
+    glColor3f( 1.0, 2.0,0.6);
+glBegin(GL_POLYGON);
+
+    glVertex2i(26,0);
+glVertex2i(27,0);
+glVertex2i(27,4);
+glVertex2i(26,4);
+
+    glEnd();
+
+    glColor3f( 1.0, 2.0,0.6);
+glBegin(GL_POLYGON);
+
+    glVertex2i(28,0);
+glVertex2i(29,0);
+glVertex2i(29,4);
+glVertex2i(28,4);
+
+    glEnd();
+
+    glColor3f( 1.0, 2.0,0.2);
+glBegin(GL_POLYGON);
+
+    glVertex2i(26,6);
+glVertex2i(27,6);
+glVertex2i(27,10);
+glVertex2i(26,10);
+
+    glEnd();
+
+    glColor3f( 1.0, 2.0,0.2);
+glBegin(GL_POLYGON);
+
+    glVertex2i(28,6);
+glVertex2i(29,6);
+glVertex2i(29,10);
+glVertex2i(28,10);
+
+    glEnd();
+
+    glColor3f( 1.0, 2.0,0.2);
+glBegin(GL_POLYGON);
+
+    glVertex2i(26,12);
+glVertex2i(27,12);
+glVertex2i(27,16);
+glVertex2i(26,16);
+
+    glEnd();
+
+        glColor3f( 1.0, 2.0,0.2);
+glBegin(GL_POLYGON);
+
+    glVertex2i(28,12);
+glVertex2i(29,12);
+glVertex2i(29,16);
+glVertex2i(28,16);
+
+    glEnd();
+
+    glColor3f( 1.0, 2.0,0.6);
+glBegin(GL_POLYGON);
+
+    glVertex2i(26,17);
+glVertex2i(29,17);
+glVertex2i(29,19);
+glVertex2i(26,19);
+
+    glEnd();
+ }
+
+ void StartingText()
+{
+    char text[120];
+
+        sprintf(text, "UNIVERSITY OF INFORMATION TECHNOLOGY & SCIENCE",5.00,8.00);
+    glColor3f(0, 1, 0);
+    glRasterPos2f( -35 , 55 );
+    for(int i = 0; text[i] != '\0'; i++)
+    {
+        if(text[i]==' '  && text[i+1]==' ')
+        {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+            glRasterPos2f( -32 , 02 );
+        }
+        else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+    }
+
+    sprintf(text, "VILLAGE SCENARIO",5.00,8.00);
+    glColor3f(1, 1, 0);
+    glRasterPos2f( -20 , 45 );
+    for(int i = 0; text[i] != '\0'; i++)
+    {
+        if(text[i]==' '  && text[i+1]==' ')
+        {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+            glRasterPos2f( -32 , 02 );
+        }
+        else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+    }
+
+        sprintf(text, "NAME-ABDULLAH AL FAHAD",5.00,8.00);
+    glColor3f(1, 0, 0);
+    glRasterPos2f( -20 , 35 );
+    for(int i = 0; text[i] != '\0'; i++)
+    {
+        if(text[i]==' '  && text[i+1]==' ')
+        {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+            glRasterPos2f( -32 , 02 );
+        }
+        else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+    }
+        sprintf(text, "ID-1914551088",5.00,8.00);
+    glColor3f(1, 0, 0);
+    glRasterPos2f( -20 , 30 );
+    for(int i = 0; text[i] != '\0'; i++)
+    {
+        if(text[i]==' '  && text[i+1]==' ')
+        {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+            glRasterPos2f( -32 , 02 );
+        }
+        else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+    }
+            sprintf(text, "DEPARTMENT OF CSE",5.00,8.00);
+    glColor3f(1, 0, 0);
+    glRasterPos2f( -20 , 25 );
+    for(int i = 0; text[i] != '\0'; i++)
+    {
+        if(text[i]==' '  && text[i+1]==' ')
+        {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+            glRasterPos2f( -32 , 02 );
+        }
+        else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+    }
+            sprintf(text, "SUBMITTED TO-",5.00,8.00);
+    glColor3f(0, 0, 1);
+    glRasterPos2f( -20 , 17 );
+    for(int i = 0; text[i] != '\0'; i++)
+    {
+        if(text[i]==' '  && text[i+1]==' ')
+        {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+            glRasterPos2f( -32 , 02 );
+        }
+        else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+    }
+                sprintf(text, "SALIM SHADMAN ANKUR ",5.00,8.00);
+    glColor3f(0, 0, 1);
+    glRasterPos2f( -10 , 12 );
+    for(int i = 0; text[i] != '\0'; i++)
+    {
+        if(text[i]==' '  && text[i+1]==' ')
+        {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+            glRasterPos2f( -32 , 02 );
+        }
+        else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+    }
+                sprintf(text, "PRESS 'd' FOR DAY MOOD",5.00,8.00);
+    glColor3f(1, 0, 1);
+    glRasterPos2f( -20 , 0 );
+    for(int i = 0; text[i] != '\0'; i++)
+    {
+        if(text[i]==' '  && text[i+1]==' ')
+        {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+            glRasterPos2f( -32 , 02 );
+        }
+        else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+    }
+        sprintf(text, " PRESS 'n' FOR NIGHT MOOD",5.00,8.00);
+    glColor3f(1, 1, 1);
+    glRasterPos2f( -21 , -5 );
+    for(int i = 0; text[i] != '\0'; i++)
+    {
+        if(text[i]==' '  && text[i+1]==' ')
+        {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+            glRasterPos2f( -32 , 02 );
+        }
+        else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+    }
+}
+
+void display(void)
+{
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glClearColor(0,0,0,0);
+    glMatrixMode( GL_PROJECTION );
+    glLoadIdentity();
+   gluOrtho2D(0.0, 35.0, 0.0, 35.0);
+    glMatrixMode( GL_MODELVIEW );
+    glLoadIdentity();
+
+    glPushMatrix();
+    sky();
+    glEnd();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    house_11();
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    house_2();
+    glEnd();
+    glPopMatrix();
+
+      glPushMatrix();
+    house_3();
+    glEnd();
+    glPopMatrix();
+
+               glPushMatrix();
+    house_4();
+    glEnd();
+    glPopMatrix();
+
+        glPushMatrix();
+    glColor3ub(255,215,0);
+    glTranslatef(txvalS,0,0);
+
+    sun(20,30);
+    glEnd();
+    glPopMatrix();
+
+        glPushMatrix();
+glColor3ub(220,220,220);
+glTranslatef(txvalC,0,0);
+
+cloud(20,25);
+cloud(22,25);
+cloud(23,25);
+cloud(21,24);
+cloud(22,24);
+
+glEnd();
+glPopMatrix();
+
+        txvalS -= 0.01;
+if(txvalS <= -70){
+           txvalS = 35;
+//txval1 = 1;
+}
+
+txvalC += 0.01;
+if(txvalC >= 70){
+           txvalC = -35;
+//txval1 = 1;
+}
+
+
+        glutPostRedisplay();
+    glColor3ub(255,255,255);//
+    glRecti(-210,310,-200,-210);
+    glRecti(200,310,210,-210);
+
+    glFlush();
+
+    glutSwapBuffers();
+}
+
+void display2()
+{
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glClearColor(0,0,0,0);
+    glMatrixMode( GL_PROJECTION );
+    glLoadIdentity();
+      gluOrtho2D(0.0, 35.0, 0.0, 35.0);
+    glMatrixMode( GL_MODELVIEW );
+    glLoadIdentity();
+    glPushMatrix();
+        house_1();
+    glEnd();
+    glPopMatrix();
+
+        glPushMatrix();
+    house_22();
+    glEnd();
+    glPopMatrix();
+
+            glPushMatrix();
+    house_33();
+    glEnd();
+    glPopMatrix();
+
+           glPushMatrix();
+    house_44();
+    glEnd();
+    glPopMatrix();
+
+            glPushMatrix();
+glColor3ub(220,220,220);
+cloud(20,25);
+cloud(22,25);
+cloud(23,25);
+cloud(21,24);
+cloud(22,24);
+
+glEnd();
+glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(txvalC,0,0);
+    glColor3f(1,1,1);
+    cloud(8,30);
+    glColor3f(0,0,0);
+    cloud(7.5,30.3);
+   glEnd();
+   glPopMatrix();
+
+   glPushMatrix();
+   glColor3f(1,1,1);
+
+   star(2,34);
+
+      star(12,34);
+      star(18,34);
+        star(25,34);
+         star(5,30);
+          star(15,30);
+           star(28,30);
+           star(33,32);
+             star(7,26);
+              star(3,28);
+              star(10,25);
+                star(30,23);
+                 star(19,29);
+                  star(2,20);
+                   star(6,22);
+                    star(20,18);
+                     star(15,15);
+   glEnd();
+   glPopMatrix();
+
+  txvalC += 0.001;
+if(txvalC >= 70){
+           txvalC = 35;
+//txval1 = 1;
+}
+        glutPostRedisplay();
+    glColor3ub(255,255,255);//
+    glRecti(-210,310,-200,-210);
+    glRecti(200,310,210,-210);
+
+    glFlush();
+
+    glutSwapBuffers();
+}
+
+
+
+    void init(void)
+{
+    glClearColor( 0.0f, 0.0f, 0.0f, 1.0f);
+
+
+}
+
+ void Display1()
+{
+        glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glClearColor(0,0,0,0);
+    glMatrixMode( GL_PROJECTION );
+    glLoadIdentity();
+    gluOrtho2D(-60,60,-40,60);
+    glMatrixMode( GL_MODELVIEW );
+    glLoadIdentity();
+    glPushMatrix();
+    StartingText();
+    glEnd();
+    glPopMatrix();
+     glFlush();
+    glutSwapBuffers();
+
+
+
+}
+
+
+ void handleKeypress(unsigned char key, int x, int y) {
+switch (key) {
+   case  'd':
+       glutDestroyWindow(1);
+       glutInitWindowSize(1200, 800);
+
+            glutCreateWindow("village scenario");
+            glutKeyboardFunc(handleKeypress);
+            glutDisplayFunc(display);
+              break;
+
+
+
+        case 'n':
+           glutDestroyWindow(1);
+       glutInitWindowSize(1200, 800);
+
+            glutCreateWindow("village scenario");
+            glutKeyboardFunc(handleKeypress);
+            glutDisplayFunc(display2);
+
+            glutPostRedisplay();
+            break;
+case 27: // Escape key
+exit(1);
+
+}
+}
+
+
+ int main (int argc, char **argv)
+{
+glutInit(&argc, argv);
+glutInitWindowSize(1200,800);
+glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+glutInitDisplayMode(GLUT_DOUBLE); // Enable double buffered mode
+
+glutInitWindowPosition(10,10);
+
+glutCreateWindow("VILLAGE SCENARIO");
+glShadeModel( GL_SMOOTH );
+glEnable( GL_DEPTH_TEST );
+
+glutKeyboardFunc(handleKeypress);
+  init();
+glShadeModel( GL_SMOOTH );
+
+
+
+glutDisplayFunc(display);
+glutDisplayFunc(display2);
+
+glutDisplayFunc(Display1);
+glDepthFunc(GL_LEQUAL);
+
+glutMainLoop();
+return 0;
+}
